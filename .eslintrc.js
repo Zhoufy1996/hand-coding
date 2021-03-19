@@ -25,6 +25,8 @@ const eslintConfig = {
                 jsx: 'never',
             },
         ],
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
     },
 };
 
