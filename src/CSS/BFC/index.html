@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>BFC</title>
+    </head>
+    <style>
+        .container {
+            margin-bottom: 10px;
+        }
+        .demo1 {
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+        }
+
+        .demo2 {
+            background-color: aquamarine;
+            width: 100px;
+            height: 100px;
+        }
+
+        .clearfix::after {
+            clear: both;
+            display: block;
+            content: "";
+            height: 0;
+            visibility: hidden;
+        }
+    </style>
+    <body>
+        <div>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank"
+                >BFC</a
+            >
+        </div>
+        <div>margin坍塌</div>
+        <div class="container">
+            <div class="demo1" style="margin-bottom: 10px"></div>
+            <div class="demo1" style="margin-top: 10px"></div>
+        </div>
+        <div>BFC不会margin坍塌</div>
+        <div class="container">
+            <div class="demo2" style="margin-bottom: 10px; display: inline-block"></div>
+            <div class="demo2" style="margin-top: 10px"></div>
+        </div>
+        <div>float,高度0</div>
+        <div class="container" style="background-color: burlywood">
+            <div style="float: left; background-color: bisque">float</div>
+        </div>
+
+        <div>float,BFC清除浮动</div>
+        <div class="container" style="background-color: burlywood; overflow: hidden">
+            <div style="float: left; background-color: bisque">float</div>
+        </div>
+
+        <div>float，clear清除浮动</div>
+        <div class="clearfix" style="background-color: burlywood">
+            <div style="float: left; background-color: bisque">float</div>
+        </div>
+        <div>我是底部</div>
+    </body>
+</html>

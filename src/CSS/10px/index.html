@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>fontsize</title>
+    </head>
+    <style></style>
+    <body>
+        <div>
+            <div>
+                <span>最小字号</span>
+                <span id="minimun-fontsize"></span>
+            </div>
+            <input type="number" id="number" />
+            <div>
+                <span id="fontsize" style="display: inline-block;"> </span>
+            </div>
+        </div>
+        <script>
+            var minimumFontSize;
+
+            var fontsizeDom = document.querySelector('#fontsize');
+
+            function getMinimumFontSize() {
+                var ta = document.createElement('div');
+                ta.style.fontSize = '6px';
+                ta.style.lineHeight = '1';
+                ta.style.position = 'fixed';
+                ta.style.left = '-100px';
+                ta.innerHTML = 'a';
+                document.body.appendChild(ta);
+                minimumFontSize = ta.clientHeight;
+                document.querySelector('#minimun-fontsize').innerHTML = minimumFontSize;
+                document.body.removeChild(ta);
+                // setFontSize(minimumFontSize)
+            }
+
+            function setFontSize(e) {
+                const num = Number(e.target.value);
+                if (typeof num === 'number') {
+                    fontsizeDom.innerHTML = num;
+                    fontsizeDom.style.fontSize = `${num}px`;
+                    if (num < minimumFontSize) {
+                        fontsizeDom.style.transform = `scale(${num / minimumFontSize})`;
+                    } else {
+                        fontsizeDom.style.removeProperty("transform")
+                    }
+                }
+            }
+
+            getMinimumFontSize();
+            document.querySelector('#number').addEventListener('change', setFontSize);
+        </script>
+    </body>
+</html>

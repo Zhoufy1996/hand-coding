@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>viewport</title>
+    </head>
+    <style>
+        .hidden {
+            display: none;
+        }
+        * {
+            margin: 0;
+        }
+    </style>
+    <body>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts" target="_blank">viewport</a>
+        <button id="add-btn" onclick="addViewPort()">添加viewport</button>
+        <!-- <button id="remove-btn" class="hidden" onclick="removeViewPort()">移除viewport</button> -->
+        <div>width:</div>
+        <div id="width"></div>
+    </body>
+    <script>
+        var viewportMetaDom = document.createElement('meta');
+        viewportMetaDom.name = 'viewport';
+        viewportMetaDom.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+        // 内存泄漏，只作为演示用，不管
+
+        function getBodyClientWidth() {
+            document.querySelector('#width').innerHTML = document.body.innerWidth;
+        }
+
+        function addViewPort() {
+            document.querySelector('head').appendChild(viewportMetaDom);
+            document.querySelector('#add-btn').className = 'hidden';
+            document.querySelector('#remove-btn').className = '';
+        }
+
+        function removeViewPort() {
+            document.querySelector('head').removeChild(viewportMetaDom);
+            document.querySelector('#remove-btn').className = 'hidden';
+            document.querySelector('#add-btn').className = '';
+        }
+        window.addEventListener('resize', getBodyClientWidth);
+    </script>
+
+    <script>
+        getBodyClientWidth();
+
+    </script>
+</html>

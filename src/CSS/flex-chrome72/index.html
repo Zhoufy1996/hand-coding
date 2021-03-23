@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>flex min-height bug</title>
+        <style></style>
+    </head>
+    <body>
+        <a href="https://zhuanlan.zhihu.com/p/56646256" target="_blank">flex弹性盒子主轴上子元素的最小大小是内容的大小</a>
+        <div style="display: flex">
+            <div
+                style="
+                    width: 400px;
+                    height: 400px;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    background-color: blue;
+                "
+            >
+                <div style="flex: 0 0 100px">header</div>
+                <div
+                    style="flex: 1 1 auto; width: 100%; background-color: yellow; display: flex; flex-direction: column"
+                >
+                    item
+                    <div
+                        style="
+                            flex: 1 1 auto;
+                            width: 100%;
+                            overflow: auto;
+                            background-color: red;
+                            display: flex;
+                            flex-direction: column;
+                        "
+                    >
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                    </div>
+                </div>
+                <div style="flex: 0 0 100px">footer</div>
+            </div>
+
+            <div
+                style="
+                    width: 400px;
+                    height: 400px;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    background-color: blue;
+                    margin-left: 50px;
+                "
+            >
+                <div style="flex: 0 0 100px">header</div>
+                <div
+                    style="
+                        flex: 1 1 auto;
+                        width: 100%;
+                        background-color: yellow;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 0;
+                    "
+                >
+                    item min-height:0
+                    <div
+                        style="
+                            flex: 1 1 auto;
+                            width: 100%;
+                            overflow: auto;
+                            background-color: red;
+                            display: flex;
+                            flex-direction: column;
+                        "
+                    >
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                        <div>123</div>
+                    </div>
+                </div>
+                <div style="flex: 0 0 100px">footer</div>
+            </div>
+        </div>
+    </body>
+    <script>
+        document.addEventListener("click", (e) => {
+            console.log(e)
+        })
+    </script>
+</html>

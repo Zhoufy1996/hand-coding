@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>center</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            .container {
+                width: 200px;
+                height: 200px;
+                background-color: aqua;
+                margin-bottom: 5px;
+            }
+
+            .item {
+                width: 100px;
+                height: 100px;
+                background-color: antiquewhite;
+                text-align: center;
+                line-height: 100px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>居中</div>
+        <div>
+            <div class="container" style="display: flex; justify-content: center; align-items: center;">
+                <div class="item">flex</div>
+            </div>
+            <div class="container" style="padding: 50px;">
+                <div class="item">padding</div>
+            </div>
+            <div class="container" style="position: relative;">
+                <div class="item" style="position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;">absolute</div>
+            </div>
+            <div class="container" style="position: relative;">
+                <div class="item" style="position: absolute;left: 50%;top: 50%;transform:translate(-50%,-50%);">transform</div>
+            </div>
+        </div>
+    </body>
+</html>

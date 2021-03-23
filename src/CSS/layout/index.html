@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>layout</title>
+        
+    </head>
+    <style>
+        .container {
+            background-color: aqua;
+            height: 500px;
+        }
+        .left {
+            background-color: antiquewhite;
+        }
+        .right {
+            background-color: aquamarine;
+        }
+        .middle {
+            background-color: blueviolet;
+        }
+    </style>
+    <body>
+        <div>三栏布局</div>
+        <div>
+            <div class="container" style="display: flex;">
+                <div class="left" style="flex: 0 0 300px;"></div>
+                <div class="middle" style="flex: 1 1 0px;"></div>
+                <div class="right" style="flex: 0 0 300px;"></div>
+            </div>
+        </div>
+    </body>
+</html>
