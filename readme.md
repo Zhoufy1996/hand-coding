@@ -1,3 +1,9 @@
+```
+yarn install
+
+yarn start
+```
+
 ### 1. css
 
 [字体小于浏览器设置的最小字号](src\CSS\11px\index.html)
