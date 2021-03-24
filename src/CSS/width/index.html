@@ -20,7 +20,7 @@
         }
     </style>
     <body>
-        <div style="margin-left: 200px;">
+        <div style="margin-left: 200px">
             <div>
                 <a
                     href="https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively"
@@ -54,14 +54,13 @@
     </body>
 
     <script>
-        var demo = document.querySelector('#demo');
-        function setAttrToDom(attr, id) {
-            var dom = document.querySelector(id);
-            console.log(dom);
+        const demo = document.querySelector('#demo');
+        const setAttrToDom = (attr, id) => {
+            const dom = document.querySelector(id);
             if (dom) {
                 dom.innerHTML = demo[attr];
             }
-        }
+        };
         setAttrToDom('clientWidth', '#client-width');
         setAttrToDom('offsetWidth', '#offset-width');
         setAttrToDom('scrollWidth', '#scroll-width');

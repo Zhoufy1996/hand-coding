@@ -13,16 +13,17 @@
             </div>
             <input type="number" id="number" />
             <div>
-                <span id="fontsize" style="display: inline-block;"> </span>
+                <span id="fontsize" style="display: inline-block"> </span>
             </div>
         </div>
         <script>
-            var minimumFontSize;
+            let minimumFontSize;
 
-            var fontsizeDom = document.querySelector('#fontsize');
+            // dom不会释放内存，内存泄漏。
+            const fontsizeDom = document.querySelector('#fontsize');
 
-            function getMinimumFontSize() {
-                var ta = document.createElement('div');
+            const getMinimumFontSize = () => {
+                const ta = document.createElement('div');
                 ta.style.fontSize = '6px';
                 ta.style.lineHeight = '1';
                 ta.style.position = 'fixed';
@@ -32,10 +33,11 @@
                 minimumFontSize = ta.clientHeight;
                 document.querySelector('#minimun-fontsize').innerHTML = minimumFontSize;
                 document.body.removeChild(ta);
-                // setFontSize(minimumFontSize)
-            }
+                document.querySelector('#number').value = minimumFontSize;
+                setFontSize({ target: { value: minimumFontSize } });
+            };
 
-            function setFontSize(e) {
+            const setFontSize = (e) => {
                 const num = Number(e.target.value);
                 if (typeof num === 'number') {
                     fontsizeDom.innerHTML = num;
@@ -43,13 +45,13 @@
                     if (num < minimumFontSize) {
                         fontsizeDom.style.transform = `scale(${num / minimumFontSize})`;
                     } else {
-                        fontsizeDom.style.removeProperty("transform")
+                        fontsizeDom.style.removeProperty('transform');
                     }
                 }
-            }
+            };
 
-            getMinimumFontSize();
             document.querySelector('#number').addEventListener('change', setFontSize);
+            getMinimumFontSize();
         </script>
     </body>
 </html>

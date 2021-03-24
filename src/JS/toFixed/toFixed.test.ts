@@ -1,4 +1,4 @@
-import toFixed from '../../src/toFixed/toFixed';
+import toFixed from './toFixed';
 
 describe('toFixed', () => {
     it('it 0.15.toFixed(1) !== 0.2', () => {

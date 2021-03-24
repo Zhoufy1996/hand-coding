@@ -11,7 +11,12 @@ const eslintConfig = {
         node: true,
         jest: true,
     },
-    globals: {},
+    globals: {
+        window: true,
+        document: true,
+        hljs: true,
+        showdown: true,
+    },
     // error warning off
     rules: {
         'no-console': 'off',

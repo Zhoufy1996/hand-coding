@@ -6,7 +6,7 @@ module.exports = {
     testMatch: [
         // '<rootDir>/test/refactoring/*.test.ts',
         // '<rootDir>/test/refactoring/*.test.ts',
-        '<rootDir>/test/**/*.test.ts',
+        '<rootDir>/src/**/*.test.ts',
         // '<rootDir>/src/**/*.test.ts',
     ],
 };

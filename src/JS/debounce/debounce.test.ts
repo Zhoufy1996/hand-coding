@@ -1,4 +1,4 @@
-import debounce from '../../src/debounce/debounce';
+import debounce from './debounce';
 
 const FIXED_SYSTEM_TIME = '2020-01-12T00:00:00Z';
 

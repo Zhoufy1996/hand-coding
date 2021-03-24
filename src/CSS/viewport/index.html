@@ -15,36 +15,46 @@
     <body>
         <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts" target="_blank">viewport</a>
         <button id="add-btn" onclick="addViewPort()">添加viewport</button>
-        <!-- <button id="remove-btn" class="hidden" onclick="removeViewPort()">移除viewport</button> -->
+        <button id="remove-btn" class="hidden" onclick="removeViewPort()">移除viewport</button>
         <div>width:</div>
         <div id="width"></div>
     </body>
     <script>
-        var viewportMetaDom = document.createElement('meta');
+        // dom不会释放内存，内存泄漏。
+        const viewportMetaDom = document.createElement('meta');
         viewportMetaDom.name = 'viewport';
         viewportMetaDom.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
-        // 内存泄漏，只作为演示用，不管
 
-        function getBodyClientWidth() {
-            document.querySelector('#width').innerHTML = document.body.innerWidth;
-        }
+        const resetMetaDom = document.createElement('meta');
+        resetMetaDom.name = 'viewport';
+        resetMetaDom.content = '';
 
-        function addViewPort() {
-            document.querySelector('head').appendChild(viewportMetaDom);
+        const head = document.querySelector('head');
+
+        const getBodyClientWidth = () => {
+            document.querySelector('#width').innerHTML = window.innerWidth;
+        };
+
+        const addViewPort = () => {
+            if (resetMetaDom.contains(head)) {
+                head.removeChild(resetMetaDom);
+            }
+            head.appendChild(viewportMetaDom);
+     
+
             document.querySelector('#add-btn').className = 'hidden';
             document.querySelector('#remove-btn').className = '';
-        }
+        };
 
-        function removeViewPort() {
-            document.querySelector('head').removeChild(viewportMetaDom);
+        const removeViewPort = () => {
+            head.removeChild(viewportMetaDom);
+            head.appendChild(resetMetaDom);
+
             document.querySelector('#remove-btn').className = 'hidden';
             document.querySelector('#add-btn').className = '';
-        }
+        };
+
         window.addEventListener('resize', getBodyClientWidth);
-    </script>
-
-    <script>
         getBodyClientWidth();
-
     </script>
 </html>

@@ -1,4 +1,4 @@
-import throttle from '../../src/throttle/throttle';
+import throttle from './throttle';
 
 const FIXED_SYSTEM_TIME = '2020-01-12T00:00:00Z';
 
