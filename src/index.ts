@@ -27,6 +27,8 @@ const getHtmlPath = (dirPath: string) => {
         const htmlFilesName = files.filter((fileName) => /\.html$/.test(fileName));
         if (htmlFilesName.length > 0) {
             result[name] = htmlFilesName.map((filename) =>
+                // http://nodejs.cn/api/path/path_relative_from_to.html
+                // 绝对路径转相对路径
                 path.relative(__dirname, path.join(dirPath, name, filename))
             );
         }
