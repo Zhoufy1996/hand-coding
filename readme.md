@@ -1,7 +1,9 @@
 ```
 yarn install
 
-yarn start
+yarn start  // 启动express服务
+
+yarn test // 执行ts的测试
 ```
 
 ### 1. css

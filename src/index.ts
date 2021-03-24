@@ -23,7 +23,8 @@ const getHtmlPath = (dirPath: string) => {
     const result: DirPath = {};
     names.forEach((name) => {
         const files = fs.readdirSync(path.join(dirPath, name));
-        const htmlFilesName = files.filter((fileName) => /\.html/.test(fileName));
+        //  /\.(?!test.)(html|ts)$/
+        const htmlFilesName = files.filter((fileName) => /\.html$/.test(fileName));
         if (htmlFilesName.length > 0) {
             result[name] = htmlFilesName.map((filename) =>
                 path.relative(__dirname, path.join(dirPath, name, filename))
